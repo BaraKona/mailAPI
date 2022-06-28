@@ -11,16 +11,13 @@ app.use(cors())
 
 const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
-    pool: true,
-    service: 'yandex/google',
-    host: 'smtp.yandex.ru/smtp.gmail.com',
-    tls: {
-      ciphers:'SSLv3'
-    },
-    auth: {
-      user: process.env.A1,
-      pass: process.env.A2
-    }
+  host: "smtp.yandex.ru",
+  port: 465,
+  secure: true, // true for 465, false for other ports
+  auth: {
+    user: process.env.A1,
+    pass: process.env.A2
+  }
 })
 
 transporter.verify((error) => {
