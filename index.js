@@ -11,11 +11,17 @@ app.use(cors())
 
 const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
-  service: 'Yandex',
-  auth: {
-    user: process.env.A1,
-    pass: process.env.A2
-  }
+    pool: true,
+    host: "uk53.siteground.eu", // hostname
+    secureConnection: false, // TLS requires secureConnection to be false
+    port: 465, // port for secure SMTP
+    tls: {
+      ciphers:'SSLv3'
+    },
+    auth: {
+      user: process.env.A1,
+      pass: process.env.A2
+    }
 })
 
 transporter.verify((error) => {
