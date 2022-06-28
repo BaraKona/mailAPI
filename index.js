@@ -11,9 +11,7 @@ app.use(cors())
 
 const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
-  host: "smtp.yandex.ru",
-  port: 465,
-  secure: true, // true for 465, false for other ports
+  service: 'Yandex',
   auth: {
     user: process.env.A1,
     pass: process.env.A2
