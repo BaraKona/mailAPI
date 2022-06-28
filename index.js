@@ -12,9 +12,9 @@ app.use(cors())
 const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     pool: true,
-    host: "uk53.siteground.eu", // hostname
+    host: "smtp-mail.outlook.com", // hostname
     secureConnection: false, // TLS requires secureConnection to be false
-    port: 465, // port for secure SMTP
+    port: 587, // port for secure SMTP
     tls: {
       ciphers:'SSLv3'
     },
@@ -33,18 +33,16 @@ transporter.verify((error) => {
     const mailOptions = {
       from: process.env.A1, // sender address (who sends)
       to: process.env.A3, // list of receivers (who receives)
-      subject: `${req.body.name} sent you a message from the Indige Contact Form!`, // Subject line
+      subject: `${req.body.name} sent you a message from the your personal portfolio site!`, // Subject line
       text: `${req.body.message}`, // plaintext body.contact
       html: `<div style="margin: 20px; text-align: left; border: solid 1px grey; border-radius: 5px; padding: 20px;">
-              <h3 style="text-align: center;">You recieved a new message from your Indige Form </h3>
+              <h3 style="text-align: center;">You received a new message from your portfolio contact form </h3>
               <hr style="margin: 20px; color: grey;"/>
               <br/>
               <h3>Name:</h3>
               <p>${req.body.name}</p>
               <h3>Their email is:</h3>
               <p>${req.body.email}</p>
-              <h3>Subject:</h3>
-              <p>${req.body.subject}</p>
               <h3>Message below:</h3>
               <p>${req.body.message}</p>
             </div>` // html body
