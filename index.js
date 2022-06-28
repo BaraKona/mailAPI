@@ -12,9 +12,8 @@ app.use(cors())
 const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     pool: true,
-    host: "smtp-mail.outlook.com", // hostname
-    secureConnection: false, // TLS requires secureConnection to be false
-    port: 587, // port for secure SMTP
+    service: 'yandex/google',
+    host: 'smtp.yandex.ru/smtp.gmail.com',
     tls: {
       ciphers:'SSLv3'
     },
